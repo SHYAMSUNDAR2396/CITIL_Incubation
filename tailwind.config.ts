@@ -67,11 +67,22 @@ export default {
           border: 'hsl(var(--sidebar-border))',
           ring: 'hsl(var(--sidebar-ring))'
         },
-        // Incubation Center Custom colors
+        // Incubation Center Custom colors - refined palette
         brand: {
-          blue: '#1A1F2C',
-          purple: '#AD163A', // Updated from purple to crimson
-          orange: '#F97316'
+          blue: '#1A1F2C',      // Dark blue - for key elements and contrast
+          purple: '#AD163A',    // Crimson - primary brand color
+          orange: '#F97316',    // Vibrant orange - for accents and calls to action
+          teal: '#0EA5E9',      // Bright teal - for secondary accents
+          yellow: '#FBBF24',    // Warm yellow - for highlights
+          green: '#10B981',     // Fresh green - for success states
+          gray: {
+            light: '#F8FAFC',   // Very light gray - for backgrounds
+            100: '#F1F5F9',     // Light gray - for alternating sections
+            200: '#E2E8F0',     // Medium light gray - for borders
+            300: '#CBD5E1',     // Medium gray - for dividers
+            400: '#94A3B8',     // Medium dark gray - for secondary text
+            500: '#64748B',     // Dark gray - for body text
+          }
         }
       },
       fontFamily: {
@@ -81,7 +92,14 @@ export default {
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)'
+        sm: 'calc(var(--radius) - 4px)',
+        xl: '1rem',
+        '2xl': '1.5rem',
+      },
+      boxShadow: {
+        'soft': '0 2px 15px rgba(0, 0, 0, 0.05)',
+        'card': '0 4px 20px rgba(0, 0, 0, 0.07)',
+        'highlight': '0 0 0 3px rgba(173, 22, 58, 0.15)',
       },
       keyframes: {
         'accordion-down': {
@@ -99,13 +117,33 @@ export default {
         'fade-out': {
           '0%': { opacity: '1', transform: 'translateY(0)' },
           '100%': { opacity: '0', transform: 'translateY(10px)' }
+        },
+        'slide-in-right': {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' }
+        },
+        'slide-in-left': {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' }
+        },
+        'zoom-in': {
+          '0%': { transform: 'scale(0.95)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' }
+        },
+        'pulse-soft': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.8' }
         }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in': 'fade-in 0.3s ease-out',
-        'fade-out': 'fade-out 0.3s ease-out'
+        'fade-out': 'fade-out 0.3s ease-out',
+        'slide-in-right': 'slide-in-right 0.5s ease-out',
+        'slide-in-left': 'slide-in-left 0.5s ease-out',
+        'zoom-in': 'zoom-in 0.3s ease-out',
+        'pulse-soft': 'pulse-soft 2s infinite ease-in-out'
       }
     }
   },

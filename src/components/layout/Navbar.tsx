@@ -1,12 +1,12 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isApplyDropdownOpen, setIsApplyDropdownOpen] = useState(false);
   const isMobile = useIsMobile();
 
   const navLinks = [
@@ -18,6 +18,13 @@ const Navbar = () => {
     { name: 'Events', path: '/events' },
     { name: 'Mentors', path: '/mentors' },
     { name: 'Contact', path: '/contact' },
+  ];
+
+  const applyOptions = [
+    { name: 'Corporate Partnership', path: '/corporate-partnership' },
+    { name: 'Use Cases', path: '/use-cases' },
+    { name: 'Investors', path: '/investors' },
+    { name: 'Startup Incubation', path: '/startup-incubation' },
   ];
 
   return (
@@ -42,9 +49,32 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button className="bg-brand-purple hover:bg-opacity-90 text-white">
-                Apply Now
-              </Button>
+              
+              {/* Apply Now Dropdown */}
+              <div className="relative">
+                <Button 
+                  className="bg-brand-purple hover:bg-opacity-90 text-white flex items-center gap-1"
+                  onClick={() => setIsApplyDropdownOpen(!isApplyDropdownOpen)}
+                >
+                  Apply Now
+                  <ChevronDown className="h-4 w-4" />
+                </Button>
+                
+                {isApplyDropdownOpen && (
+                  <div className="absolute top-full mt-2 right-0 bg-white rounded-md shadow-lg border min-w-[200px] z-50">
+                    {applyOptions.map((option) => (
+                      <Link
+                        key={option.name}
+                        to={option.path}
+                        className="block px-4 py-3 text-gray-700 hover:bg-gray-50 hover:text-brand-purple transition-colors first:rounded-t-md last:rounded-b-md"
+                        onClick={() => setIsApplyDropdownOpen(false)}
+                      >
+                        {option.name}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           )}
 
@@ -74,11 +104,31 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Button className="bg-brand-purple hover:bg-opacity-90 w-full text-white">
-                Apply Now
-              </Button>
+              
+              {/* Mobile Apply Options */}
+              <div className="border-t pt-4 space-y-2">
+                <p className="text-sm font-semibold text-gray-900 px-2">Apply Now:</p>
+                {applyOptions.map((option) => (
+                  <Link
+                    key={option.name}
+                    to={option.path}
+                    className="block px-4 py-2 text-white bg-brand-purple hover:bg-opacity-90 rounded-md transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {option.name}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
+        )}
+
+        {/* Click outside to close dropdown */}
+        {isApplyDropdownOpen && (
+          <div 
+            className="fixed inset-0 z-40" 
+            onClick={() => setIsApplyDropdownOpen(false)}
+          />
         )}
       </div>
     </nav>

@@ -16,6 +16,10 @@ import MentorsPage from "./pages/MentorsPage";
 import ContactPage from "./pages/ContactPage";
 import FacilitiesPage from "./pages/FacilitiesPage";
 import FacilityDetailPage from "./pages/FacilityDetailPage";
+import CorporatePartnershipPage from "./pages/CorporatePartnershipPage";
+import UseCasesPage from "./pages/UseCasesPage";
+import InvestorsPage from "./pages/InvestorsPage";
+import StartupIncubationPage from "./pages/StartupIncubationPage";
 import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 
@@ -36,7 +40,13 @@ const AnimatedRoutes = () => {
         <Route path="/facilities" element={<PageTransition><FacilitiesPage /></PageTransition>} />
         <Route path="/facilities/:id" element={<PageTransition><FacilityDetailPage /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><ContactPage /></PageTransition>} />
+        <Route path="/corporate-partnership" element={<PageTransition><CorporatePartnershipPage /></PageTransition>} />
+        <Route path="/use-cases" element={<PageTransition><UseCasesPage /></PageTransition>} />
+        <Route path="/investors" element={<PageTransition><InvestorsPage /></PageTransition>} />
         <Route path="/admin" element={<PageTransition><AdminPage /></PageTransition>} />
+        <Route path="/startup-incubation" element={<PageTransition><StartupIncubationPage /></PageTransition>} />
+        
+        {/* Add any additional custom routes here */}
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

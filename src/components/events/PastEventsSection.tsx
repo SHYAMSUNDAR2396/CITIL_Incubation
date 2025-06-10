@@ -2,6 +2,7 @@
 import React from 'react';
 import PastEventCard from './PastEventCard';
 import NewsItem from './NewsItem';
+import { Badge } from '@/components/ui/badge';
 
 interface PastEvent {
   id: number;
@@ -19,24 +20,59 @@ interface PastEventsSectionProps {
 const PastEventsSection: React.FC<PastEventsSectionProps> = ({ pastEvents, onOpenGallery }) => {
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {pastEvents.map((event) => (
-          <PastEventCard 
-            key={event.id} 
-            {...event}
-            onClick={() => onOpenGallery(event)}
-          />
-        ))}
+      <div className="space-y-8">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-bold relative">
+            Past Events
+            <div className="absolute -bottom-1 left-0 w-20 h-1 bg-brand-purple"></div>
+          </h2>
+          <Badge variant="outline" className="px-3 py-1 text-sm border-brand-purple text-brand-purple">
+            {pastEvents.length} Events
+          </Badge>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {pastEvents.map((event) => (
+            <PastEventCard 
+              key={event.id} 
+              {...event}
+              onClick={() => onOpenGallery(event)}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Academic Publications and News */}
-      <div className="mt-16">
-        <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold mb-4">Latest News & Publications</h2>
-          <div className="w-24 h-1 bg-brand-purple mx-auto"></div>
+      <div className="mt-20">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-10">
+          <div className="mb-4 md:mb-0">
+            <h2 className="text-2xl font-bold relative inline-block">
+              Latest News & Publications
+              <div className="absolute -bottom-1 left-0 w-20 h-1 bg-brand-purple"></div>
+            </h2>
+          </div>
+          <div>
+            <a href="#" className="text-brand-purple hover:text-brand-purple/80 font-medium inline-flex items-center transition-colors">
+              View All News
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-4 w-4 ml-1" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M9 5l7 7-7 7" 
+                />
+              </svg>
+            </a>
+          </div>
         </div>
         
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 gap-8">
           <NewsItem 
             title="CIT Incubation Center Recognized as Top 10 in South India"
             date="May 28, 2023"

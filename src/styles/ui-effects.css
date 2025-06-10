@@ -1,0 +1,18 @@
+
+@layer components {
+  /* Glassy UI */
+  .glass {
+    @apply backdrop-blur-md bg-white/60 dark:bg-black/60;
+    @apply border border-white/20 dark:border-gray-700/30;
+  }
+  
+  /* Neon effect */
+  .neon-text {
+    text-shadow: 0 0 5px rgb(var(--primary)), 0 0 20px rgb(var(--primary));
+  }
+  
+  .neon-border {
+    @apply border border-brand-red;
+    box-shadow: 0 0 5px rgba(var(--primary)), 0 0 10px rgba(var(--primary));
+  }
+}

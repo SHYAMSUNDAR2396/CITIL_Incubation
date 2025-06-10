@@ -1,0 +1,59 @@
+
+@layer components {
+  .hero-gradient {
+    @apply bg-gradient-to-r from-brand-blue via-brand-purple to-brand-orange;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-purple to-brand-orange;
+  }
+  
+  .btn-primary {
+    @apply bg-brand-purple hover:bg-opacity-90 text-white rounded-lg px-6 py-3 font-medium transition-all;
+    @apply relative overflow-hidden;
+    @apply hover:shadow-[0_0_20px_rgba(173,22,58,0.5)];
+  }
+  
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity;
+  }
+  
+  .btn-primary:hover::after {
+    @apply opacity-20;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-brand-purple text-brand-purple hover:bg-brand-purple hover:text-white rounded-lg px-6 py-3 font-medium transition-all;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+    @apply relative overflow-hidden;
+  }
+  
+  .card-hover::after {
+    content: '';
+    @apply absolute -inset-[1px] opacity-0 bg-gradient-to-r from-brand-purple to-brand-orange rounded-lg transition-opacity;
+    z-index: -1;
+  }
+  
+  .card-hover:hover::after {
+    @apply opacity-20;
+  }
+  
+  .futuristic-border {
+    @apply relative;
+    @apply after:absolute after:inset-0 after:p-[1px] after:bg-gradient-to-r after:from-brand-purple after:to-brand-orange after:rounded-lg after:-z-10;
+  }
+  
+  .glow {
+    @apply relative;
+    @apply after:absolute after:inset-0 after:rounded-lg after:blur-md after:-z-10 after:opacity-50 after:transition-opacity;
+    @apply hover:after:opacity-100;
+  }
+  
+  .glow-red::after {
+    @apply after:bg-brand-red;
+  }
+}
